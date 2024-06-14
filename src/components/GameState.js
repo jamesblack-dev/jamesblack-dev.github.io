@@ -62,11 +62,7 @@ export default function GameState() {
         return false;
     }
 
-    function endGame() {
-
-    }
-
-    function onClickEnd(){
+    function onClickEnd() {
         setCurrentPiece("X");
         setGameState(getNewGameState());
         setGameInProgress(true);
