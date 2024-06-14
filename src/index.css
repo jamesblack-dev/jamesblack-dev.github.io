@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
+div.container {
+  width: 152px;
+}
+
 div.row {
   border-color: black;
   border-width: 1px;
