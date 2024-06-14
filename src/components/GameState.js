@@ -82,7 +82,7 @@ export default function GameState() {
                             : <button onClick={onClickNewGame}>New Game?</button>
                         }
                     </div>
-                    <div className="winTable">
+                    <div className="score-board">
                         <table>
                             <thead>
 
