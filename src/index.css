@@ -14,6 +14,7 @@ code {
 
 div.container {
   width: 152px;
+  height: 150px;
 }
 
 div.row {
@@ -33,4 +34,8 @@ div.score-board {
   float: right;
   margin-right: 43%;
   width: 150px
+}
+
+button.new-game {
+  margin-top: 50%;
 }

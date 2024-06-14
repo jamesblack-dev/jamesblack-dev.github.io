@@ -13,23 +13,29 @@ export default function GameBoard(props) {
     return (
         <>
             <div className="container">
-                <div className="row">
-                    <div style={gridCss} className="column col-4" onClick={(e) => handleClick(e, 1, 1)}></div>
-                    <div style={gridCss} className="column col-4" onClick={(e) => handleClick(e, 1, 2)}></div>
-                    <div style={gridCss} className="column col-4" onClick={(e) => handleClick(e, 1, 3)}></div>
-                </div>
-                <div className="row">
-                    <div style={gridCss} className="column col-4" onClick={(e) => handleClick(e, 2, 1)}></div>
-                    <div style={gridCss} className="column col-4" onClick={(e) => handleClick(e, 2, 2)}></div>
-                    <div style={gridCss} className="column col-4" onClick={(e) => handleClick(e, 2, 3)}></div>
-                </div>
-                <div className="row">
-                    <div style={gridCss} className="column col-4" onClick={(e) => handleClick(e, 3, 1)}></div>
-                    <div style={gridCss} className="column col-4" onClick={(e) => handleClick(e, 3, 2)}></div>
-                    <div style={gridCss} className="column col-4" onClick={(e) => handleClick(e, 3, 3)}></div>
-                </div>
+                {props.gameInProgress ?
+                <>
+                    <div className="row">
+                        <div style={gridCss} className="column col-4" onClick={(e) => handleClick(e, 1, 1)}></div>
+                        <div style={gridCss} className="column col-4" onClick={(e) => handleClick(e, 1, 2)}></div>
+                        <div style={gridCss} className="column col-4" onClick={(e) => handleClick(e, 1, 3)}></div>
+                    </div>
+                    <div className="row">
+                        <div style={gridCss} className="column col-4" onClick={(e) => handleClick(e, 2, 1)}></div>
+                        <div style={gridCss} className="column col-4" onClick={(e) => handleClick(e, 2, 2)}></div>
+                        <div style={gridCss} className="column col-4" onClick={(e) => handleClick(e, 2, 3)}></div>
+                    </div>
+                    <div className="row">
+                        <div style={gridCss} className="column col-4" onClick={(e) => handleClick(e, 3, 1)}></div>
+                        <div style={gridCss} className="column col-4" onClick={(e) => handleClick(e, 3, 2)}></div>
+                        <div style={gridCss} className="column col-4" onClick={(e) => handleClick(e, 3, 3)}></div>
+                    </div>
+                    </>
 
+                    : <button className="new-game" onClick={props.onClickNewGame}>New Game?</button>
+                }
             </div>
+
         </>
     )
 }

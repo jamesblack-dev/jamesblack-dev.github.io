@@ -73,21 +73,17 @@ export default function GameState() {
     return (
         <>
             <div>
-                <div>
-                    <div>
-                        <GameHeader gameInProgress={gameInProgress} currentPiece={currentPiece} />
-                        {gameInProgress ?
-                            <GameBoard
-                                updateGameState={updateGameState}
-                                pieceInPlay={currentPiece}
-                                canPlay={canPlay} />
-                            : <button onClick={onClickNewGame}>New Game?</button>
-                        }
-                    </div>
-                    <ScoreBoard scoreBoard={scoreBoard} />
-                </div>
+                <GameHeader
+                    gameInProgress={gameInProgress}
+                    currentPiece={currentPiece} />
+                <GameBoard
+                    gameInProgress={gameInProgress}
+                    updateGameState={updateGameState}
+                    pieceInPlay={currentPiece}
+                    canPlay={canPlay}
+                    onClickNewGame={onClickNewGame} />
             </div>
-
+            <ScoreBoard scoreBoard={scoreBoard} />
         </>
     )
 }
