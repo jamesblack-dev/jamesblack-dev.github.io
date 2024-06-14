@@ -20,7 +20,6 @@ export default function GameState() {
 
         if (hasWon(selectedRow, selectedColumn)) {
             setGameInProgress(false);
-            endGame();
 
             var newScore = { ...scoreBoard };
             newScore[currentPiece].score = newScore[currentPiece].score + 1;
