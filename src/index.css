@@ -27,3 +27,10 @@ div.column {
   border-width: 1px;
   border-style: solid;
 }
+
+div.winTable {
+  display: inline;
+  float: right;
+  margin-right: 43%;
+  width: 150px
+}

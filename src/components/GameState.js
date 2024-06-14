@@ -6,6 +6,7 @@ export default function GameState() {
     const [currentPiece, setCurrentPiece] = useState("X");
     const [gameState, setGameState] = useState(getNewGameState());
     const [gameInProgress, setGameInProgress] = useState(true);
+    const [winsState, setWinsState] = useState({ "X": 0, "O": 0 });
 
     function updateGameState(selectedRow, selectedColumn) {
         // -1 to normalise for arrays
@@ -16,6 +17,9 @@ export default function GameState() {
         if (hasWon(selectedRow, selectedColumn)) {
             setGameInProgress(false);
             endGame();
+            var newWinsState = { ...winsState };
+            newWinsState[currentPiece] = newWinsState[currentPiece] + 1;
+            setWinsState(newWinsState);
             return;
         }
 
@@ -34,7 +38,7 @@ export default function GameState() {
         const columnIndex = selectedColumn - 1;
         // accumulator
         const accumulatorFunc = (accumulator, currentValue) => { return accumulator && currentValue === currentPiece }
-        
+
         // check winning row
         const rowValues = gameState[rowIndex];
         if (rowValues.reduce(accumulatorFunc, true)) { return true; }
@@ -42,7 +46,7 @@ export default function GameState() {
         // check winning column
         const columnValues = [gameState[0][columnIndex], gameState[1][columnIndex], gameState[2][columnIndex]];
         if (columnValues.reduce(accumulatorFunc, true)) { return true; }
-        
+
         // check winning diagonals
         const leftToRightDescDiagValues = [gameState[0][0], gameState[1][1], gameState[2][2]];
         if (leftToRightDescDiagValues.reduce(accumulatorFunc, true)) { return true; }
@@ -65,14 +69,39 @@ export default function GameState() {
 
     return (
         <>
-            <h1>Piece in Play: {currentPiece}</h1>
-            {gameInProgress ?
-                <GameBoard
-                    updateGameState={updateGameState}
-                    pieceInPlay={currentPiece}
-                    canPlay={canPlay} />
-                : <button onClick={onClickNewGame}>New Game?</button>
-            }
+            <div>
+                <div>
+                    <div>
+                        <h1>{gameInProgress ? "Piece in Play: " + currentPiece : "The winner is: " + currentPiece}</h1>
+                        {gameInProgress ?
+                            <GameBoard
+                                updateGameState={updateGameState}
+                                pieceInPlay={currentPiece}
+                                canPlay={canPlay} />
+                            : <button onClick={onClickNewGame}>New Game?</button>
+                        }
+                    </div>
+                    <div className="winTable">
+                        <table>
+                            <thead>
+
+                                <tr>
+                                    <th>X</th>
+                                    <th>Y</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr>
+                                    <td>{winsState["X"]}</td>
+                                    <td>{winsState["O"]}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
         </>
     )
 }
