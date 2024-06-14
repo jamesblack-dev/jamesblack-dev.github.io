@@ -1,5 +1,6 @@
 import GameBoard from "./GameBoard";
 import GameHeader from "./GameHeader";
+import ScoreBoard from "./ScoreBoard";
 import { useState } from "react";
 
 export default function GameState() {
@@ -83,24 +84,7 @@ export default function GameState() {
                             : <button onClick={onClickNewGame}>New Game?</button>
                         }
                     </div>
-                    <div className="score-board">
-                        <table>
-                            <thead>
-
-                                <tr>
-                                    <th>X</th>
-                                    <th>Y</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                                <tr>
-                                    <td>{scoreBoard["X"]}</td>
-                                    <td>{scoreBoard["O"]}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <ScoreBoard scoreBoard={scoreBoard} />
                 </div>
             </div>
 
