@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/jamesblack-dev.github.io/static/css/main.45d02041.css",
+    "main.js": "/jamesblack-dev.github.io/static/js/main.b8f64640.js",
+    "static/js/453.86c098f9.chunk.js": "/jamesblack-dev.github.io/static/js/453.86c098f9.chunk.js",
+    "index.html": "/jamesblack-dev.github.io/index.html",
+    "main.45d02041.css.map": "/jamesblack-dev.github.io/static/css/main.45d02041.css.map",
+    "main.b8f64640.js.map": "/jamesblack-dev.github.io/static/js/main.b8f64640.js.map",
+    "453.86c098f9.chunk.js.map": "/jamesblack-dev.github.io/static/js/453.86c098f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.45d02041.css",
+    "static/js/main.b8f64640.js"
+  ]
+}
