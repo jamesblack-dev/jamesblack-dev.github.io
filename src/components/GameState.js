@@ -66,23 +66,21 @@ export default function GameState() {
 
     function onClickNewGame() {
         setGameState(getNewGameState());
-        setCurrentPiece("X");
+        //setCurrentPiece("X");
         setGameInProgress(true);
     }
 
     return (
         <>
-            <div>
-                <GameHeader
-                    gameInProgress={gameInProgress}
-                    currentPiece={currentPiece} />
-                <GameBoard
-                    gameInProgress={gameInProgress}
-                    updateGameState={updateGameState}
-                    pieceInPlay={currentPiece}
-                    canPlay={canPlay}
-                    onClickNewGame={onClickNewGame} />
-            </div>
+            <GameHeader
+                gameInProgress={gameInProgress}
+                currentPiece={currentPiece} />
+            <GameBoard
+                gameInProgress={gameInProgress}
+                updateGameState={updateGameState}
+                pieceInPlay={currentPiece}
+                canPlay={canPlay}
+                onClickNewGame={onClickNewGame} />
             <ScoreBoard scoreBoard={scoreBoard} />
         </>
     )

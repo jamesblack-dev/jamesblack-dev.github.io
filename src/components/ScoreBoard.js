@@ -6,7 +6,7 @@ export default function ScoreBoard(props) {
 
                     <tr>
                         <th>X</th>
-                        <th>Y</th>
+                        <th>O</th>
                     </tr>
                 </thead>
                 <tbody>
