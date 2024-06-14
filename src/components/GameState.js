@@ -1,4 +1,5 @@
 import GameBoard from "./GameBoard";
+import GameHeader from "./GameHeader";
 import { useState } from "react";
 
 export default function GameState() {
@@ -72,7 +73,7 @@ export default function GameState() {
             <div>
                 <div>
                     <div>
-                        <h1>{gameInProgress ? "Piece in Play: " + currentPiece : "The winner is: " + currentPiece}</h1>
+                        <GameHeader gameInProgress={gameInProgress} currentPiece={currentPiece} />
                         {gameInProgress ?
                             <GameBoard
                                 updateGameState={updateGameState}
