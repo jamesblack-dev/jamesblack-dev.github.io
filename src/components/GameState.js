@@ -9,6 +9,9 @@ export default function GameState() {
     const [gameState, setGameState] = useState(getNewGameState());
     const [gameInProgress, setGameInProgress] = useState(true);
     const [scoreBoard, setScoreBoard] = useState({ "X": 0, "O": 0 });
+    const [scoreBoardInitialised, setScoreBoardInitialised] = useState(false);
+    const [player1, setPlayer1] = useState("");
+    const [player2, setPlayer2] = useState("");
 
     function updateGameState(selectedRow, selectedColumn) {
         // -1 to normalise for arrays
@@ -19,10 +22,10 @@ export default function GameState() {
         if (hasWon(selectedRow, selectedColumn)) {
             setGameInProgress(false);
             endGame();
-            setScoreBoard({
-                ...scoreBoard,
-                [currentPiece]: scoreBoard[currentPiece] + 1
-            });
+
+            var newScore = {...scoreBoard};
+            newScore[currentPiece].score = newScore[currentPiece].score + 1;
+            setScoreBoard(newScore);
             return;
         }
 
@@ -70,18 +73,61 @@ export default function GameState() {
         setGameInProgress(true);
     }
 
+    function handleSubmit(e) {
+        e.preventDefault();
+        setScoreBoard(
+            {
+                "X": {
+                    playerName: player1,
+                    score: 0
+                },
+                "O": {
+                    playerName: player2,
+                    score: 0
+                }
+            });
+        setScoreBoardInitialised(true);
+    }
+
     return (
         <>
-            <GameHeader
-                gameInProgress={gameInProgress}
-                currentPiece={currentPiece} />
-            <GameBoard
-                gameInProgress={gameInProgress}
-                updateGameState={updateGameState}
-                pieceInPlay={currentPiece}
-                canPlay={canPlay}
-                onClickNewGame={onClickNewGame} />
-            <ScoreBoard scoreBoard={scoreBoard} />
+            {scoreBoardInitialised ?
+                <>
+                    <GameHeader
+                        gameInProgress={gameInProgress}
+                        currentPiece={currentPiece} />
+                    <GameBoard
+                        gameInProgress={gameInProgress}
+                        updateGameState={updateGameState}
+                        pieceInPlay={currentPiece}
+                        canPlay={canPlay}
+                        onClickNewGame={onClickNewGame} />
+                    <ScoreBoard scoreBoard={scoreBoard} />
+                </>
+                : <form onSubmit={handleSubmit}>
+                    <div>
+                        <label htmlFor="player1">Player 1:</label>
+                        <input
+                            value={player1}
+                            onChange={(e) => setPlayer1(e.target.value)}
+                            name="player1"
+                            type="text" ></input>
+                    </div>
+                    <div>
+                        <label htmlFor="player2">Player 2:</label>
+                        <input
+                            value={player2}
+                            onChange={(e) => setPlayer2(e.target.value)}
+                            name="player2"
+                            type="text"></input>
+                    </div>
+                    <div>
+                        <button type="submit">Submit</button>
+                    </div>
+                    <p>{player1}</p>
+                    <p>{player2}</p>
+                </form>
+            }
         </>
     )
 }

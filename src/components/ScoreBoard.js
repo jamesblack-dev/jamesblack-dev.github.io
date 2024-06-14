@@ -5,15 +5,15 @@ export default function ScoreBoard(props) {
                 <thead>
 
                     <tr>
-                        <th>X</th>
-                        <th>O</th>
+                        <th>{props.scoreBoard["X"].playerName}</th>
+                        <th>{props.scoreBoard["O"].playerName}</th>
                     </tr>
                 </thead>
                 <tbody>
 
                     <tr>
-                        <td>{props.scoreBoard["X"]}</td>
-                        <td>{props.scoreBoard["O"]}</td>
+                        <td>{props.scoreBoard["X"].score}</td>
+                        <td>{props.scoreBoard["O"].score}</td>
                     </tr>
                 </tbody>
             </table>
