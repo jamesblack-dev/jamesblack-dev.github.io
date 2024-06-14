@@ -1,6 +1,7 @@
 import GameBoard from "./GameBoard";
 import GameHeader from "./GameHeader";
 import ScoreBoard from "./ScoreBoard";
+import LoadNames from "./LoadNames";
 import { useState } from "react";
 
 export default function GameState() {
@@ -107,27 +108,13 @@ export default function GameState() {
                         onClickEnd={onClickEnd} />
                     <ScoreBoard scoreBoard={scoreBoard} />
                 </>
-                : <form onSubmit={handleSubmit}>
-                    <div>
-                        <label htmlFor="player1">Player 1 Name (Crosses):</label>
-                        <input
-                            value={player1}
-                            onChange={(e) => setPlayer1(e.target.value)}
-                            name="player1"
-                            type="text" ></input>
-                    </div>
-                    <div>
-                        <label htmlFor="player2">Player 2 Name (Noughts):</label>
-                        <input
-                            value={player2}
-                            onChange={(e) => setPlayer2(e.target.value)}
-                            name="player2"
-                            type="text"></input>
-                    </div>
-                    <div>
-                        <button type="submit">Submit</button>
-                    </div>
-                </form>
+                : <LoadNames
+                    handleSubmit={handleSubmit}
+                    player1={player1}
+                    player2={player2}
+                    setPlayer1={setPlayer1}
+                    setPlayer2={setPlayer2}
+                />
             }
         </>
     )
