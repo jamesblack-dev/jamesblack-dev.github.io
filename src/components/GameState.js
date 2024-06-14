@@ -7,7 +7,7 @@ export default function GameState() {
     const [currentPiece, setCurrentPiece] = useState("X");
     const [gameState, setGameState] = useState(getNewGameState());
     const [gameInProgress, setGameInProgress] = useState(true);
-    const [winsState, setWinsState] = useState({ "X": 0, "O": 0 });
+    const [scoreBoard, setScoreBoard] = useState({ "X": 0, "O": 0 });
 
     function updateGameState(selectedRow, selectedColumn) {
         // -1 to normalise for arrays
@@ -18,9 +18,9 @@ export default function GameState() {
         if (hasWon(selectedRow, selectedColumn)) {
             setGameInProgress(false);
             endGame();
-            setWinsState({
-                ...winsState,
-                [currentPiece]: winsState[currentPiece] + 1
+            setScoreBoard({
+                ...scoreBoard,
+                [currentPiece]: scoreBoard[currentPiece] + 1
             });
             return;
         }
@@ -95,8 +95,8 @@ export default function GameState() {
                             <tbody>
 
                                 <tr>
-                                    <td>{winsState["X"]}</td>
-                                    <td>{winsState["O"]}</td>
+                                    <td>{scoreBoard["X"]}</td>
+                                    <td>{scoreBoard["O"]}</td>
                                 </tr>
                             </tbody>
                         </table>
