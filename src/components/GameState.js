@@ -18,9 +18,10 @@ export default function GameState() {
         if (hasWon(selectedRow, selectedColumn)) {
             setGameInProgress(false);
             endGame();
-            var newWinsState = { ...winsState };
-            newWinsState[currentPiece] = newWinsState[currentPiece] + 1;
-            setWinsState(newWinsState);
+            setWinsState({
+                ...winsState,
+                [currentPiece]: winsState[currentPiece] + 1
+            });
             return;
         }
 
