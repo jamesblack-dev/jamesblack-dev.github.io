@@ -8,8 +8,7 @@ export default function GameState() {
     const [currentPiece, setCurrentPiece] = useState("X");
     const [gameState, setGameState] = useState(getNewGameState());
     const [gameInProgress, setGameInProgress] = useState(true);
-    const [scoreBoard, setScoreBoard] = useState({ "X": 0, "O": 0 });
-    const [scoreBoardInitialised, setScoreBoardInitialised] = useState(false);
+    const [scoreBoard, setScoreBoard] = useState(null);
     const [player1, setPlayer1] = useState("");
     const [player2, setPlayer2] = useState("");
 
@@ -23,7 +22,7 @@ export default function GameState() {
             setGameInProgress(false);
             endGame();
 
-            var newScore = {...scoreBoard};
+            var newScore = { ...scoreBoard };
             newScore[currentPiece].score = newScore[currentPiece].score + 1;
             setScoreBoard(newScore);
             return;
@@ -86,12 +85,11 @@ export default function GameState() {
                     score: 0
                 }
             });
-        setScoreBoardInitialised(true);
     }
 
     return (
         <>
-            {scoreBoardInitialised ?
+            {scoreBoard ?
                 <>
                     <GameHeader
                         gameInProgress={gameInProgress}
@@ -124,8 +122,6 @@ export default function GameState() {
                     <div>
                         <button type="submit">Submit</button>
                     </div>
-                    <p>{player1}</p>
-                    <p>{player2}</p>
                 </form>
             }
         </>
