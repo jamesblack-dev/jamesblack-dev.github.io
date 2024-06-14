@@ -12,6 +12,7 @@ export default function GameState() {
     const [scoreBoard, setScoreBoard] = useState(null);
     const [player1, setPlayer1] = useState("");
     const [player2, setPlayer2] = useState("");
+    const [endGameMessage, setEndGameMessage] = useState("");
 
     function updateGameState(selectedRow, selectedColumn) {
         // -1 to normalise for arrays
@@ -25,6 +26,13 @@ export default function GameState() {
             var newScore = { ...scoreBoard };
             newScore[currentPiece].score = newScore[currentPiece].score + 1;
             setScoreBoard(newScore);
+            setEndGameMessage("The winner is: " + scoreBoard[currentPiece].playerName);
+            return;
+        }
+
+        if (isDraw()) {
+            setGameInProgress(false);
+            setEndGameMessage("No winner this time. Try again.");
             return;
         }
 
@@ -60,6 +68,19 @@ export default function GameState() {
         if (leftToRightAscDiagValues.reduce(accumulatorFunc, true)) { return true; }
 
         return false;
+    }
+
+    function isDraw() {
+        let isFullyPopulated = true;
+        gameState.forEach((row) => {
+            var reduced = row.reduce((previous, current) => {
+                return ((current)? true : false) && previous
+            },
+                true);
+            isFullyPopulated = isFullyPopulated && reduced;
+        });
+
+        return isFullyPopulated;
     }
 
     function onClickEnd() {
@@ -98,6 +119,7 @@ export default function GameState() {
                     <GameHeader
                         gameInProgress={gameInProgress}
                         currentPlayer={scoreBoard[currentPiece].playerName}
+                        gameEndMessage={endGameMessage}
                     />
                     <GameBoard
                         gameInProgress={gameInProgress}
