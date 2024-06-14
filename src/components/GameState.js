@@ -96,7 +96,8 @@ export default function GameState() {
                 <>
                     <GameHeader
                         gameInProgress={gameInProgress}
-                        currentPiece={currentPiece} />
+                        currentPlayer={scoreBoard[currentPiece].playerName}
+                    />
                     <GameBoard
                         gameInProgress={gameInProgress}
                         updateGameState={updateGameState}
@@ -108,7 +109,7 @@ export default function GameState() {
                 </>
                 : <form onSubmit={handleSubmit}>
                     <div>
-                        <label htmlFor="player1">Player 1:</label>
+                        <label htmlFor="player1">Player 1 Name (Crosses):</label>
                         <input
                             value={player1}
                             onChange={(e) => setPlayer1(e.target.value)}
@@ -116,7 +117,7 @@ export default function GameState() {
                             type="text" ></input>
                     </div>
                     <div>
-                        <label htmlFor="player2">Player 2:</label>
+                        <label htmlFor="player2">Player 2 Name (Noughts):</label>
                         <input
                             value={player2}
                             onChange={(e) => setPlayer2(e.target.value)}
