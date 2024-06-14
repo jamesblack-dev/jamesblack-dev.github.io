@@ -66,9 +66,17 @@ export default function GameState() {
 
     }
 
+    function onClickEnd(){
+        setCurrentPiece("X");
+        setGameState(getNewGameState());
+        setGameInProgress(true);
+        setScoreBoard(null);
+        setPlayer1("");
+        setPlayer2("");
+    }
+
     function onClickNewGame() {
         setGameState(getNewGameState());
-        //setCurrentPiece("X");
         setGameInProgress(true);
     }
 
@@ -99,7 +107,8 @@ export default function GameState() {
                         updateGameState={updateGameState}
                         pieceInPlay={currentPiece}
                         canPlay={canPlay}
-                        onClickNewGame={onClickNewGame} />
+                        onClickNewGame={onClickNewGame}
+                        onClickEnd={onClickEnd} />
                     <ScoreBoard scoreBoard={scoreBoard} />
                 </>
                 : <form onSubmit={handleSubmit}>
