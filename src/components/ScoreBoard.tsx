@@ -3,7 +3,6 @@ export default function ScoreBoard(props) {
         <div className="score-board">
             <table>
                 <thead>
-
                     <tr>
                         <th>{props.scoreBoard["X"].playerName}</th>
                         <th>{props.scoreBoard["O"].playerName}</th>

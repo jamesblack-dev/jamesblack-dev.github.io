@@ -9,7 +9,7 @@ export default function GameState() {
     const [currentPiece, setCurrentPiece] = useState("X");
     const [gameState, setGameState] = useState(getNewGameState());
     const [gameInProgress, setGameInProgress] = useState(true);
-    const [scoreBoard, setScoreBoard] = useState(null);
+    const [scoreBoard, setScoreBoard] = useState(null as any);
     const [player1, setPlayer1] = useState("");
     const [player2, setPlayer2] = useState("");
     const [endGameMessage, setEndGameMessage] = useState("");
