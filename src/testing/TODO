@@ -1,0 +1,4 @@
+- move this folder out of src, as it does not belong here, 
+    but something to do with the way bundling is set up is forcing it to be here 
+    (the react-app initialisation and scripts maybe?)
+- for some reason css is not loading - I think this article may help me https://www.cypress.io/blog/2021/04/06/cypress-component-testing-react

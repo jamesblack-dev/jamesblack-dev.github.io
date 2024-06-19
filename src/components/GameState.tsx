@@ -113,7 +113,7 @@ export default function GameState() {
     }
 
     return (
-        <>
+        <div className="gameState">
             {scoreBoard ?
                 <>
                     <GameHeader
@@ -138,6 +138,6 @@ export default function GameState() {
                     setPlayer2={setPlayer2}
                 />
             }
-        </>
+        </div>
     )
 }

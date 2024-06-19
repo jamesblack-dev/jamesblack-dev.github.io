@@ -21,7 +21,8 @@
       "jsx": "react-jsx",
       "noImplicitAny": false,// TODO: set to true and fix warnings
     },
+    "types": [],
     "include": [
-      "src"
+      "src","cypress",
     ]
   }
