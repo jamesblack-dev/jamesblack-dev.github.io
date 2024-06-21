@@ -6,7 +6,7 @@ export default function LoadNames(props) {
                 <input
                     value={props.player1}
                     onChange={(e) => props.setPlayer1(e.target.value)}
-                    name="player1"
+                    id="player1"
                     type="text" ></input>
             </div>
             <div>
@@ -14,7 +14,7 @@ export default function LoadNames(props) {
                 <input
                     value={props.player2}
                     onChange={(e) => props.setPlayer2(e.target.value)}
-                    name="player2"
+                    id="player2"
                     type="text"></input>
             </div>
             <div>
